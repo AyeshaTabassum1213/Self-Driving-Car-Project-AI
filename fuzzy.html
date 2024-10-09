@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Membership Function Diagrams</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            margin: 0;
+        }
+        #chart-container {
+            width: 60%;
+        }
+        canvas {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div id="chart-container">
+        <canvas id="distanceChart" width="400" height="200"></canvas>
+    </div>
+    <script>
+        const ctx = document.getElementById('distanceChart').getContext('2d');
+        const distanceChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [0, 2.5, 5, 7.5, 10],
+                datasets: [{
+                    label: 'Low',
+                    data: [1, 0.5, 0, 0, 0],
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Medium',
+                    data: [0, 0.5, 1, 0.5, 0],
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'High',
+                    data: [0, 0, 0, 0.5, 1],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Fuzzy Logic Membership Functions for Distance',
+                        font: {
+                            size: 18,
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            font: {
+                                size: 14
+                            }
+                        }
+                    },
+                    tooltip: {
+                        enabled: true,
+                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                        titleFont: {
+                            size: 16,
+                            weight: 'bold'
+                        },
+                        bodyFont: {
+                            size: 14
+                        },
+                        footerFont: {
+                            size: 12
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'bottom',
+                        title: {
+                            display: true,
+                            text: 'Distance',
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            }
+                        },
+                        grid: {
+                            display: true,
+                            color: 'rgba(200, 200, 200, 0.2)'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Membership Value',
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            }
+                        },
+                        grid: {
+                            display: true,
+                            color: 'rgba(200, 200, 200, 0.2)'
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
